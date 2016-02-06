@@ -80,6 +80,10 @@ def main ():
                          break
 	          output_api.ApiOutput (module_array [i].__NAME__, module_array [i].__VERS__, module_array [i].__DESC__, module_array [i].__AUTHORS__, None).out ()
 	          module_array [i].run (args [1:])
+	elif args [0] == 'exit':
+	     exit ()
+	elif args [0] == 'clear':
+	     os.system ('clear')
 	else:
 	   print output_api.ERR + 'Command not found!'
 if __name__ == '__main__':
