@@ -2,6 +2,18 @@
 
 # Main File
 
+
+commands = {
+    'help' : 'show this message',
+    'run' : 'run some exploit (run <exploit title> [ARGUMENTS])',
+    'exploits' : 'show full exploits list',
+    'exit' : 'exit from framework',
+    'clear' : 'clear screen'
+}
+
+
+
+
 import os
 from colorama import Fore
 
@@ -66,9 +78,8 @@ def main ():
 	command = raw_input ('>>> ')
 	args = command.split (' ')
 	if args [0] == 'exploits':
-	    for i in module_array: print module_array [i].__TITLE__
+	    for i in module_array: print module_array [i].__TITLE__ + ' - ' + module_array [i].__DESC__
 	elif args [0] == 'run':
-#	   print args [1:]
 	   for i in module_array:
 	       if module_array [i].__TITLE__ == args [1]:
 	          try:
@@ -84,6 +95,8 @@ def main ():
 	     exit ()
 	elif args [0] == 'clear':
 	     os.system ('clear')
+        elif args [0] == 'help':
+   	     for i in commands: print i + ' - ' + commands [i]
 	else:
 	   print output_api.ERR + 'Command not found!'
 if __name__ == '__main__':
